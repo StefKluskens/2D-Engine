@@ -1,4 +1,4 @@
-// HogwartsEngine.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// 2D-SDL-Engine.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
 #include <iostream>

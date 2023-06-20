@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{0152ea6c-bba1-4304-9d75-5ae1aa5cdea4}</ProjectGuid>
+    <ProjectGuid>{6d6cca7e-cb11-40a4-b187-e2759720c64a}</ProjectGuid>
     <RootNamespace>HogwartsBattle</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

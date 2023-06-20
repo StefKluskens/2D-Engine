@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HogwartsBattle", "HogwartsBattle\HogwartsBattle.vcxproj", "{0152EA6C-BBA1-4304-9D75-5AE1AA5CDEA4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HogwartsBattle", "HogwartsBattle\HogwartsBattle.vcxproj", "{6D6CCA7E-CB11-40A4-B187-E2759720C64A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HogwartsEngine", "HogwartsEngine\HogwartsEngine.vcxproj", "{02A7E57A-E63F-4D56-9D5C-C26DA07B26EE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2D-SDL-Engine", "2D-SDL-Engine\2D-SDL-Engine.vcxproj", "{5BE8EE41-6419-4096-959C-00C296E1168A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,22 +15,22 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0152EA6C-BBA1-4304-9D75-5AE1AA5CDEA4}.Debug|x64.ActiveCfg = Debug|x64
-		{0152EA6C-BBA1-4304-9D75-5AE1AA5CDEA4}.Debug|x64.Build.0 = Debug|x64
-		{0152EA6C-BBA1-4304-9D75-5AE1AA5CDEA4}.Debug|x86.ActiveCfg = Debug|Win32
-		{0152EA6C-BBA1-4304-9D75-5AE1AA5CDEA4}.Debug|x86.Build.0 = Debug|Win32
-		{0152EA6C-BBA1-4304-9D75-5AE1AA5CDEA4}.Release|x64.ActiveCfg = Release|x64
-		{0152EA6C-BBA1-4304-9D75-5AE1AA5CDEA4}.Release|x64.Build.0 = Release|x64
-		{0152EA6C-BBA1-4304-9D75-5AE1AA5CDEA4}.Release|x86.ActiveCfg = Release|Win32
-		{0152EA6C-BBA1-4304-9D75-5AE1AA5CDEA4}.Release|x86.Build.0 = Release|Win32
-		{02A7E57A-E63F-4D56-9D5C-C26DA07B26EE}.Debug|x64.ActiveCfg = Debug|x64
-		{02A7E57A-E63F-4D56-9D5C-C26DA07B26EE}.Debug|x64.Build.0 = Debug|x64
-		{02A7E57A-E63F-4D56-9D5C-C26DA07B26EE}.Debug|x86.ActiveCfg = Debug|Win32
-		{02A7E57A-E63F-4D56-9D5C-C26DA07B26EE}.Debug|x86.Build.0 = Debug|Win32
-		{02A7E57A-E63F-4D56-9D5C-C26DA07B26EE}.Release|x64.ActiveCfg = Release|x64
-		{02A7E57A-E63F-4D56-9D5C-C26DA07B26EE}.Release|x64.Build.0 = Release|x64
-		{02A7E57A-E63F-4D56-9D5C-C26DA07B26EE}.Release|x86.ActiveCfg = Release|Win32
-		{02A7E57A-E63F-4D56-9D5C-C26DA07B26EE}.Release|x86.Build.0 = Release|Win32
+		{6D6CCA7E-CB11-40A4-B187-E2759720C64A}.Debug|x64.ActiveCfg = Debug|x64
+		{6D6CCA7E-CB11-40A4-B187-E2759720C64A}.Debug|x64.Build.0 = Debug|x64
+		{6D6CCA7E-CB11-40A4-B187-E2759720C64A}.Debug|x86.ActiveCfg = Debug|Win32
+		{6D6CCA7E-CB11-40A4-B187-E2759720C64A}.Debug|x86.Build.0 = Debug|Win32
+		{6D6CCA7E-CB11-40A4-B187-E2759720C64A}.Release|x64.ActiveCfg = Release|x64
+		{6D6CCA7E-CB11-40A4-B187-E2759720C64A}.Release|x64.Build.0 = Release|x64
+		{6D6CCA7E-CB11-40A4-B187-E2759720C64A}.Release|x86.ActiveCfg = Release|Win32
+		{6D6CCA7E-CB11-40A4-B187-E2759720C64A}.Release|x86.Build.0 = Release|Win32
+		{5BE8EE41-6419-4096-959C-00C296E1168A}.Debug|x64.ActiveCfg = Debug|x64
+		{5BE8EE41-6419-4096-959C-00C296E1168A}.Debug|x64.Build.0 = Debug|x64
+		{5BE8EE41-6419-4096-959C-00C296E1168A}.Debug|x86.ActiveCfg = Debug|Win32
+		{5BE8EE41-6419-4096-959C-00C296E1168A}.Debug|x86.Build.0 = Debug|Win32
+		{5BE8EE41-6419-4096-959C-00C296E1168A}.Release|x64.ActiveCfg = Release|x64
+		{5BE8EE41-6419-4096-959C-00C296E1168A}.Release|x64.Build.0 = Release|x64
+		{5BE8EE41-6419-4096-959C-00C296E1168A}.Release|x86.ActiveCfg = Release|Win32
+		{5BE8EE41-6419-4096-959C-00C296E1168A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

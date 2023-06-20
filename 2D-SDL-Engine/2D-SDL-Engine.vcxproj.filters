@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="HogwartsEngine.cpp">
+    <ClCompile Include="2D-SDL-Engine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
