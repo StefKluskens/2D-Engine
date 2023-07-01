@@ -159,19 +159,27 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Components\BaseComponent.cpp" />
     <ClCompile Include="Core\2D-SDL-Engine.cpp" />
-    <ClCompile Include="Core\Renderer.cpp" />
+    <ClCompile Include="Renderer\Renderer.cpp" />
     <ClCompile Include="Core\FileManager.cpp" />
-    <ClCompile Include="Core\InputManager.cpp" />
+    <ClCompile Include="Input\InputManager.cpp" />
     <ClCompile Include="FileTypes\Texture.cpp" />
+    <ClCompile Include="Core\SceneManager.cpp" />
+    <ClCompile Include="SceneGraph\GameObject.cpp" />
+    <ClCompile Include="SceneGraph\Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Components\BaseComponent.h" />
     <ClInclude Include="Core\2D-SDL-Engine.h" />
-    <ClInclude Include="Core\Renderer.h" />
+    <ClInclude Include="Renderer\Renderer.h" />
     <ClInclude Include="Core\Singleton.h" />
     <ClInclude Include="Core\FileManager.h" />
-    <ClInclude Include="Core\InputManager.h" />
+    <ClInclude Include="Input\InputManager.h" />
     <ClInclude Include="FileTypes\Texture.h" />
+    <ClInclude Include="Core\SceneManager.h" />
+    <ClInclude Include="SceneGraph\GameObject.h" />
+    <ClInclude Include="SceneGraph\Scene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

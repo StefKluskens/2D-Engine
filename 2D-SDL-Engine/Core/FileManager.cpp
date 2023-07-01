@@ -1,7 +1,7 @@
 #include "FileManager.h"
 #include <SDL_image.h>
 #include <SDL_ttf.h>
-#include "Renderer.h"
+#include "../Renderer/Renderer.h"
 #include "../FileTypes/Texture.h"
 
 void Engine::FileManager::CreateFileManager(std::string dataPath)

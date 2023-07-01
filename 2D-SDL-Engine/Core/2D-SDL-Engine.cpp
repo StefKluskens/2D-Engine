@@ -1,9 +1,11 @@
 #include <iostream>
 #include "2D-SDL-Engine.h"
 #include "SDL.h"
-#include "Renderer.h"
+#include "../Renderer/Renderer.h"
 #include "FileManager.h"
-#include "InputManager.h"
+#include "../Input/InputManager.h"
+#include "SceneManager.h"
+#include <chrono>
 
 Engine::SDLEngine::SDLEngine(const std::string& dataPath)
 {
@@ -27,14 +29,34 @@ void Engine::SDLEngine::Run(const std::function<void()>& load)
 
 	auto& input = InputManager::GetInstance();
 	auto& renderer = Renderer::GetInstance();
+	auto& sceneManager = SceneManager::GetInstance();
 
 	bool doContinue = true;
+	auto lastTime = std::chrono::high_resolution_clock::now();
+	int frameTimeMs = 6;
+	float lag = 0.f;
+	const float fixedTimeStepSec{ 0.02f };
 
 	while (doContinue)
 	{
+		const auto currentTime = std::chrono::high_resolution_clock::now();
+		const float deltaTime = std::chrono::duration<float>(currentTime - lastTime).count();
+
+		lastTime = currentTime;
+		lag += deltaTime;
+
 		doContinue = input.ProcessInput();
 
-		
+		while (lag >= fixedTimeStepSec)
+		{
+			sceneManager.FixedUpdate(fixedTimeStepSec);
+			lag -= fixedTimeStepSec;
+		}
+
+		sceneManager.Update(deltaTime);
 		renderer.Render();
+
+		const auto sleepTime = currentTime + std::chrono::milliseconds(frameTimeMs) - std::chrono::high_resolution_clock::now();
+		std::this_thread::sleep_for(sleepTime);
 	}
 }
