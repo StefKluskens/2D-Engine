@@ -16,6 +16,8 @@ namespace Engine
 		void FixedUpdate(float deltaTime);
 		void Render();
 
+		void SetActiveScene(Scene* scene);
+
 	private:
 		friend class Singleton<SceneManager>;
 		SceneManager() = default;

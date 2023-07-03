@@ -10,6 +10,11 @@ Engine::GameObject::GameObject(std::string name, Scene* pScene)
 
 void Engine::GameObject::Update(float deltaTime)
 {
+	for (size_t i = 0; i < m_pChildren.size(); ++i)
+	{
+		m_pChildren[i]->Update(deltaTime);
+	}
+
 	for (size_t i = 0; i < m_pComponents.size(); ++i)
 	{
 		m_pComponents[i]->Update(deltaTime);
@@ -18,6 +23,11 @@ void Engine::GameObject::Update(float deltaTime)
 
 void Engine::GameObject::FixedUpdate(float deltaTime)
 {
+	for (size_t i = 0; i < m_pChildren.size(); ++i)
+	{
+		m_pChildren[i]->FixedUpdate(deltaTime);
+	}
+
 	for (size_t i = 0; i < m_pComponents.size(); ++i)
 	{
 		m_pComponents[i]->FixedUpdate(deltaTime);
@@ -26,6 +36,11 @@ void Engine::GameObject::FixedUpdate(float deltaTime)
 
 void Engine::GameObject::Render() const
 {
+	for (size_t i = 0; i < m_pChildren.size(); ++i)
+	{
+		m_pChildren[i]->Render();
+	}
+
 	for (size_t i = 0; i < m_pComponents.size(); ++i)
 	{
 		m_pComponents[i]->Render();
@@ -35,6 +50,16 @@ void Engine::GameObject::Render() const
 void Engine::GameObject::AddComponent(std::unique_ptr<BaseComponent> pComponent)
 {
 	m_pComponents.emplace_back(std::move(pComponent));
+}
+
+const std::string Engine::GameObject::GetName() const
+{
+	return m_Name;
+}
+
+void Engine::GameObject::SetName(const std::string& name)
+{
+	m_Name = name;
 }
 
 void Engine::GameObject::SetParent(GameObject* pParent, bool keepWorldPos)
@@ -53,7 +78,7 @@ void Engine::GameObject::SetParent(GameObject* pParent, bool keepWorldPos)
 
 		m_pTransform->SetPositionDirty();
 
-		/*std::unique_ptr<GameObject> child;
+		std::unique_ptr<GameObject> child;
 
 		if (m_pParent != nullptr)
 		{
@@ -77,6 +102,33 @@ void Engine::GameObject::SetParent(GameObject* pParent, bool keepWorldPos)
 				child = std::unique_ptr<GameObject>(this);
 			}
 			m_pParent->m_pChildren.emplace_back(std::move(child));
-		}*/
+		}
 	}
+}
+
+const Engine::GameObject* Engine::GameObject::GetChildByName(const std::string& name) const
+{
+	for (const auto& child : m_pChildren)
+	{
+		if (child->GetName() == name)
+		{
+			return child.get();
+		}
+	}
+	return nullptr;
+}
+
+void Engine::GameObject::SetPosition(float x, float y)
+{
+	m_pTransform->SetLocalPosition(glm::vec2(x, y));
+}
+
+void Engine::GameObject::SetPosition(int x, int y)
+{
+	m_pTransform->SetLocalPosition(glm::vec2(x, y));
+}
+
+void Engine::GameObject::SetPosition(glm::vec2 pos)
+{
+	m_pTransform->SetLocalPosition(pos);
 }

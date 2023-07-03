@@ -31,3 +31,8 @@ void Engine::SceneManager::Render()
         m_pActiveScene->Render();
     }
 }
+
+void Engine::SceneManager::SetActiveScene(Scene* scene)
+{
+    m_pActiveScene = scene;
+}

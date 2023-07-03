@@ -11,7 +11,7 @@ void Engine::FileManager::CreateFileManager(std::string dataPath)
 	TTF_Init();
 }
 
-std::shared_ptr<Engine::Texture> Engine::FileManager::LoadTexture(const std::string filePath) const
+std::unique_ptr<Engine::Texture> Engine::FileManager::LoadTexture(const std::string filePath) const
 {
 	const auto path = m_DataPath + filePath;
 	auto texture = IMG_LoadTexture(Renderer::GetInstance().GetRenderer(), path.c_str());
@@ -22,5 +22,5 @@ std::shared_ptr<Engine::Texture> Engine::FileManager::LoadTexture(const std::str
 		return nullptr;
 	}
 
-	return std::make_shared<Texture>(texture);
+	return std::make_unique<Texture>(texture);
 }

@@ -3,7 +3,7 @@
 
 namespace Engine
 {
-	class TransformComponent : public BaseComponent
+	class TransformComponent final : public BaseComponent
 	{
 	public:
 		TransformComponent(GameObject* pObject);
@@ -17,17 +17,17 @@ namespace Engine
 		void Update(float /*deltaTime*/) override {};
 		void FixedUpdate(float /*deltaTime*/) override {};
 
-		const glm::vec3 GetLocalPosition() const { return m_LocalPosition; }
-		const glm::vec3& GetWorldPosition();
+		const glm::vec2 GetLocalPosition() const { return m_LocalPosition; }
+		const glm::vec2& GetWorldPosition();
 		void UpdateWorldPosition();
 
-		void SetLocalPosition(const glm::vec3& pos);
-		void SetWorldPosition(const glm::vec3& pos) { m_WorldPosition = pos; }
+		void SetLocalPosition(const glm::vec2& pos);
+		void SetWorldPosition(const glm::vec2& pos) { m_WorldPosition = pos; }
 		void SetPositionDirty();
 
 	private:
-		glm::vec3 m_LocalPosition{};
-		glm::vec3 m_WorldPosition{};
+		glm::vec2 m_LocalPosition{};
+		glm::vec2 m_WorldPosition{};
 
 		bool m_PositionIsDirty{ true };
 	};

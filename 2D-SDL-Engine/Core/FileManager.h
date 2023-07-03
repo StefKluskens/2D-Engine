@@ -12,7 +12,8 @@ namespace Engine
 	public:
 		void CreateFileManager(std::string dataPath);
 
-		std::shared_ptr<Texture> LoadTexture(const std::string filePath) const;
+		//std::shared_ptr<Texture> LoadTexture(const std::string filePath) const;
+		std::unique_ptr<Texture> LoadTexture(const std::string filePath) const;
 
 	private:
 		friend class Singleton<FileManager>;

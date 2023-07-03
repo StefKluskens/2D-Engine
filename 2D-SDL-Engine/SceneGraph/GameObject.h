@@ -28,8 +28,17 @@ namespace Engine
 		template <typename T> T* GetComponent() const;
 		template <typename T> void RemoveComponent();
 
+		const std::string GetName() const;
+		void SetName(const std::string& name);
+
 		void SetParent(GameObject* pParent, bool keepWorldPos);
 		const GameObject* GetParent() const { return m_pParent; };
+
+		const GameObject* GetChildByName(const std::string& name) const;
+
+		void SetPosition(float x, float y);
+		void SetPosition(int x, int y);
+		void SetPosition(glm::vec2 pos);
 
 	private:
 		std::string m_Name{ "GameObject" };
@@ -41,6 +50,7 @@ namespace Engine
 		std::unique_ptr<TransformComponent> m_pTransform;
 
 		GameObject* m_pParent{ nullptr };
+		std::vector<std::unique_ptr<GameObject>> m_pChildren;
 	};
 
 	template<typename T>

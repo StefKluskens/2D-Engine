@@ -6,21 +6,38 @@
 #include "../Input/InputManager.h"
 #include "SceneManager.h"
 #include <chrono>
+#include "../Window/WindowManager.h"
+
+SDL_Window* g_Window{};
 
 Engine::SDLEngine::SDLEngine(const std::string& dataPath)
+	: m_WindowName("Window")
+	, m_WindowWidth(1300)
+	, m_WindowHeight(987)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 
-	//turn into variable, probably global
-	SDL_Window* pWindow = SDL_CreateWindow("Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1300, 987, SDL_WINDOW_OPENGL);
+	g_Window = SDL_CreateWindow(
+		m_WindowName.c_str(),
+		SDL_WINDOWPOS_CENTERED,
+		SDL_WINDOWPOS_CENTERED,
+		m_WindowWidth,
+		m_WindowHeight,
+		SDL_WINDOW_OPENGL);
 
-	Renderer::GetInstance().CreateRenderer(pWindow);
+	g_WindowWidth = m_WindowWidth;
+	g_WindowHeight = m_WindowHeight;
+
+	Renderer::GetInstance().CreateRenderer(g_Window);
 	FileManager::GetInstance().CreateFileManager(dataPath);
 }
 
 Engine::SDLEngine::~SDLEngine()
 {
 	Renderer::GetInstance().Destroy();
+	SDL_DestroyWindow(g_Window);
+	g_Window = nullptr;
+	SDL_Quit();
 }
 
 void Engine::SDLEngine::Run(const std::function<void()>& load)

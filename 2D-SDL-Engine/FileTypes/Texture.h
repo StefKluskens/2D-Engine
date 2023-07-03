@@ -11,7 +11,7 @@ namespace Engine
 		explicit Texture(SDL_Texture* pTexture);
 		~Texture();
 
-		SDL_Texture* GetTexture();
+		SDL_Texture* GetTexture() const;
 		glm::ivec2 GetSize() const;
 
 		Texture(const Texture&) = delete;

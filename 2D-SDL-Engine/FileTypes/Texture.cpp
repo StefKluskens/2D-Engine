@@ -11,7 +11,7 @@ Engine::Texture::~Texture()
 	SDL_DestroyTexture(m_pTexture);
 }
 
-SDL_Texture* Engine::Texture::GetTexture()
+SDL_Texture* Engine::Texture::GetTexture() const
 {
 	return m_pTexture;
 }
