@@ -168,6 +168,7 @@
     <ClCompile Include="Core\SceneManager.cpp" />
     <ClCompile Include="SceneGraph\GameObject.cpp" />
     <ClCompile Include="SceneGraph\Scene.cpp" />
+    <ClCompile Include="Components\TransformComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\BaseComponent.h" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Core\SceneManager.h" />
     <ClInclude Include="SceneGraph\GameObject.h" />
     <ClInclude Include="SceneGraph\Scene.h" />
+    <ClInclude Include="Components\TransformComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

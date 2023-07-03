@@ -3,6 +3,7 @@
 #include <vector>
 #include <memory>
 #include "../Components/BaseComponent.h"
+#include "../Components/TransformComponent.h"
 
 namespace Engine
 {
@@ -21,9 +22,14 @@ namespace Engine
 		void FixedUpdate(float deltaTime);
 		void Render() const;
 
+		TransformComponent* GetTransform() const { return m_pTransform.get(); }
+
 		void AddComponent(std::unique_ptr<BaseComponent> pComponent);
 		template <typename T> T* GetComponent() const;
 		template <typename T> void RemoveComponent();
+
+		void SetParent(GameObject* pParent, bool keepWorldPos);
+		const GameObject* GetParent() const { return m_pParent; };
 
 	private:
 		std::string m_Name{ "GameObject" };
@@ -32,6 +38,9 @@ namespace Engine
 		Scene* m_pScene{ nullptr };
 
 		std::vector<std::unique_ptr<BaseComponent>> m_pComponents;
+		std::unique_ptr<TransformComponent> m_pTransform;
+
+		GameObject* m_pParent{ nullptr };
 	};
 
 	template<typename T>
