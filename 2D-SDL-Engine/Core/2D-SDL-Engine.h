@@ -17,14 +17,8 @@ namespace Engine
 		SDLEngine& operator=(SDLEngine&& other) = delete;
 
 		const std::string& GetWindowTitle() const { return m_WindowName; };
-		const int GetWindowWidth() const { return m_WindowWidth; };
-		const int GetWindowHeight() const { return m_WindowHeight; };
-
-		//static SDL_Window* g_Window;
 
 	private:
 		const std::string m_WindowName{};
-		const int m_WindowWidth{};
-		const int m_WindowHeight{};
 	};
 }
