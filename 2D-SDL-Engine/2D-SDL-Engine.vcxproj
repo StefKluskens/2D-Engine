@@ -170,11 +170,13 @@
     <ClCompile Include="SceneGraph\Scene.cpp" />
     <ClCompile Include="Components\TransformComponent.cpp" />
     <ClCompile Include="Components\TextureComponent.cpp" />
+    <ClCompile Include="Observer\Subject.cpp" />
     <ClCompile Include="Window\WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\BaseComponent.h" />
     <ClInclude Include="Core\2D-SDL-Engine.h" />
+    <ClInclude Include="Observer\Observer.h" />
     <ClInclude Include="Renderer\Renderer.h" />
     <ClInclude Include="Core\Singleton.h" />
     <ClInclude Include="Core\FileManager.h" />
@@ -185,6 +187,7 @@
     <ClInclude Include="SceneGraph\Scene.h" />
     <ClInclude Include="Components\TransformComponent.h" />
     <ClInclude Include="Components\TextureComponent.h" />
+    <ClInclude Include="Observer\Subject.h" />
     <ClInclude Include="Window\WindowManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

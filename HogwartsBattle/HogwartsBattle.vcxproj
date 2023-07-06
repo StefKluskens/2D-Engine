@@ -151,10 +151,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cards\CardClickObserver.cpp" />
+    <ClCompile Include="Cards\CardComponent.cpp" />
     <ClCompile Include="HogwartsBattle.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cards\CardClickObserver.h" />
+    <ClInclude Include="Cards\CardComponent.h" />
     <ClInclude Include="HogwartsBattle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
