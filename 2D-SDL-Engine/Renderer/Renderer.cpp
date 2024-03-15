@@ -2,6 +2,10 @@
 #include "../FileTypes/Texture.h"
 #include "../Core/SceneManager.h"
 
+#include "imgui.h"
+#include <backends/imgui_impl_sdl2.h>
+#include <backends/imgui_impl_sdlrenderer.h>
+
 void Engine::Renderer::CreateRenderer(SDL_Window* pWindow)
 {
 	m_pWindow = pWindow;
@@ -13,15 +17,35 @@ void Engine::Renderer::CreateRenderer(SDL_Window* pWindow)
 	SDL_RenderClear(m_pRenderer);
 
 	SDL_RenderPresent(m_pRenderer);
+
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+
+	ImGuiIO& io = ImGui::GetIO(); (void)io;
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
+	io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+
+	ImGui::StyleColorsDark();
+
+	ImGui_ImplSDL2_InitForSDLRenderer(m_pWindow, m_pRenderer);
+	ImGui_ImplSDLRenderer_Init(m_pRenderer);
 }
 
 void Engine::Renderer::Render() const
 {
+	ImGui_ImplSDLRenderer_NewFrame();
+	ImGui_ImplSDL2_NewFrame(m_pWindow);
+	ImGui::NewFrame();
+
 	const auto& color = GetBackgroundColor();
 	SDL_SetRenderDrawColor(m_pRenderer, color.r, color.g, color.b, color.a);
 	SDL_RenderClear(m_pRenderer);
 
 	SceneManager::GetInstance().Render();
+
+	ImGui::Render();
+
+	ImGui_ImplSDLRenderer_RenderDrawData(ImGui::GetDrawData());
 
 	SDL_RenderPresent(m_pRenderer);
 }
@@ -30,6 +54,10 @@ void Engine::Renderer::Destroy()
 {
 	if (m_pRenderer)
 	{
+		ImGui_ImplSDLRenderer_Shutdown();
+		ImGui_ImplSDL2_Shutdown();
+		ImGui::DestroyContext();
+
 		SDL_DestroyRenderer(m_pRenderer);
 		m_pRenderer = nullptr;
 	}

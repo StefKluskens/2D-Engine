@@ -6,7 +6,7 @@ namespace Engine
 	class SDLEngine final
 	{
 	public:
-		explicit SDLEngine(const std::string& dataPath);
+		explicit SDLEngine(const std::string& dataPath, const std::string& windowTitle);
 
 		~SDLEngine();
 		void Run(const std::function<void()>& load);
@@ -16,9 +16,9 @@ namespace Engine
 		SDLEngine& operator=(const SDLEngine& other) = delete;
 		SDLEngine& operator=(SDLEngine&& other) = delete;
 
-		const std::string& GetWindowTitle() const { return m_WindowName; };
+		/*const std::string& GetWindowTitle() const { return m_WindowName; };*/
 
 	private:
-		const std::string m_WindowName{};
+		//const std::string m_WindowName{};
 	};
 }

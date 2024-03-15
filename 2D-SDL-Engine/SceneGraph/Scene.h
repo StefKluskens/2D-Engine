@@ -20,6 +20,8 @@ namespace Engine
 
 		void AddObject(std::shared_ptr<GameObject> pObject);
 
+		const std::string GetName() const { return m_Name; }
+
 	private:
 		explicit Scene(const std::string& name);
 

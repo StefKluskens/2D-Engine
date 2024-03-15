@@ -1,6 +1,7 @@
 #include "InputManager.h"
 #include "SDL.h"
 #include "../Observer/Observer.h"
+#include <backends/imgui_impl_sdl2.h>
 
 Engine::InputManager::InputManager()
 	: m_pMouseSubject(std::make_unique<Subject>())
@@ -14,6 +15,8 @@ bool Engine::InputManager::ProcessInput()
 	SDL_Event event;
 	while (SDL_PollEvent(&event))
 	{
+		ImGui_ImplSDL2_ProcessEvent(&event);
+
 		if (event.type == SDL_QUIT)
 		{
 			return false;

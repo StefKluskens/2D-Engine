@@ -10,19 +10,19 @@
 
 SDL_Window* g_Window{};
 
-Engine::SDLEngine::SDLEngine(const std::string& dataPath)
-	: m_WindowName("Window")
+Engine::SDLEngine::SDLEngine(const std::string& dataPath, const std::string& windowTitle)
+	//: m_WindowName("Window")
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 
 	g_Window = SDL_CreateWindow(
-		m_WindowName.c_str(),
+		windowTitle.c_str(),
 		SDL_WINDOWPOS_CENTERED,
 		SDL_WINDOWPOS_CENTERED,
 		g_WindowWidth,
 		g_WindowHeight,
 		SDL_WINDOW_OPENGL);
-	SDL_SetWindowFullscreen(g_Window, SDL_WINDOW_FULLSCREEN_DESKTOP);
+	//SDL_SetWindowFullscreen(g_Window, SDL_WINDOW_INPUT_FOCUS);
 
 	Renderer::GetInstance().CreateRenderer(g_Window);
 	FileManager::GetInstance().CreateFileManager(dataPath);

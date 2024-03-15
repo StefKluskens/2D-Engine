@@ -9,7 +9,7 @@
 
 int main()
 {
-	Engine::SDLEngine engine("../Data/");
+	Engine::SDLEngine engine("../Data/", "Hogwarts Battle");
 	HB::HogwartsBattle hb;
 	engine.Run([&hb]() {hb.Load(); });
 	return 0;
