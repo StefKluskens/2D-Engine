@@ -153,13 +153,19 @@
   <ItemGroup>
     <ClCompile Include="Cards\CardClickObserver.cpp" />
     <ClCompile Include="Cards\CardComponent.cpp" />
+    <ClCompile Include="Cards\Components\DarkArtsCardComponent.cpp" />
+    <ClCompile Include="Cards\Deck\Deck.cpp" />
     <ClCompile Include="HogwartsBattle.cpp" />
+    <ClCompile Include="Cards\Components\LocationCardComponent.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cards\CardClickObserver.h" />
     <ClInclude Include="Cards\CardComponent.h" />
+    <ClInclude Include="Cards\Components\DarkArtsCardComponent.h" />
+    <ClInclude Include="Cards\Deck\Deck.h" />
     <ClInclude Include="HogwartsBattle.h" />
+    <ClInclude Include="Cards\Components\LocationCardComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

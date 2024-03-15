@@ -21,9 +21,10 @@ void HB::CardClickObserver::Notify(Engine::Event event)
 	{
 	case Engine::Event::LeftMouseDown:
 	{
-		//check if click is inside of card rect
-		std::cout << "mouse pos x: " << mousePos.x << ", mouse pos y: " << mousePos.y << '\n';
-		m_CardComponent->CardClicked();
+		if (m_CardComponent->IsActive() && m_CardComponent->IsPointInCard(mousePos.x, mousePos.y))
+		{
+			m_CardComponent->CardClicked();
+		}
 		break;
 	}
 	default:
