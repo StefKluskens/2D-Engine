@@ -21,10 +21,10 @@ void HB::CardClickObserver::Notify(Engine::Event event)
 	{
 	case Engine::Event::LeftMouseDown:
 	{
-		if (m_CardComponent->IsActive() && m_CardComponent->IsPointInCard(mousePos.x, mousePos.y))
+		/*if (m_CardComponent->IsActive() && m_CardComponent->IsPointInCard(mousePos.x, mousePos.y))
 		{
 			m_CardComponent->CardClicked();
-		}
+		}*/
 		break;
 	}
 	default:
