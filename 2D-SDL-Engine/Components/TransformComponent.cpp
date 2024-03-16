@@ -51,6 +51,12 @@ void Engine::TransformComponent::SetLocalPosition(const glm::vec2& pos)
 	SetPositionDirty();
 }
 
+void Engine::TransformComponent::SetLocalPosition(float x, float y)
+{
+	m_LocalPosition = { x, y };
+	SetPositionDirty();
+}
+
 void Engine::TransformComponent::SetPositionDirty()
 {
 	m_PositionIsDirty = true;

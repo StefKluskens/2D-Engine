@@ -40,6 +40,8 @@ namespace Engine
 		void SetPosition(int x, int y);
 		void SetPosition(glm::vec2 pos);
 
+		Scene* GetScene() const { return m_pScene; }
+
 	private:
 		std::string m_Name{ "GameObject" };
 		std::string m_Tag{ "" };

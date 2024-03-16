@@ -2,6 +2,7 @@
 #include "../Core/Singleton.h"
 #include "../Observer/Subject.h"
 #include <memory>
+#include <glm/vec2.hpp>
 
 namespace Engine
 {
@@ -17,6 +18,7 @@ namespace Engine
 
 		const int GetMouseX() const { return m_MouseX; }
 		const int GetMouseY() const { return m_MouseY; }
+		const glm::vec2 GetMousePos() const;
 
 	private:
 		std::unique_ptr<Subject> m_pMouseSubject;

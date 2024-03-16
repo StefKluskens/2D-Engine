@@ -4,7 +4,9 @@ namespace Engine
 	enum class Event
 	{
 		LeftMouseDown,
-		LeftMouseUp
+		LeftMouseUp,
+		RightMouseDown,
+		RightMouseUp
 	};
 
 	class Observer

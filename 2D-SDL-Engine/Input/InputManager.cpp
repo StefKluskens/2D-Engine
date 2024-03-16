@@ -27,7 +27,29 @@ bool Engine::InputManager::ProcessInput()
 			if (event.button.button == SDL_BUTTON_LEFT)
 			{
 				SDL_GetMouseState(&m_MouseX, &m_MouseY);
-				m_pMouseSubject->Notify(Event::LeftMouseDown);
+				if (m_pMouseSubject)
+				{
+					m_pMouseSubject->Notify(Event::LeftMouseDown);
+				}
+			}
+			else if (event.button.button == SDL_BUTTON_RIGHT)
+			{
+				SDL_GetMouseState(&m_MouseX, &m_MouseY);
+				m_pMouseSubject->Notify(Event::RightMouseDown);
+			}
+		}
+
+		if (event.type == SDL_MOUSEBUTTONUP)
+		{
+			if (event.button.button == SDL_BUTTON_LEFT)
+			{
+				SDL_GetMouseState(&m_MouseX, &m_MouseY);
+				m_pMouseSubject->Notify(Event::LeftMouseUp);
+			}
+			else if (event.button.button == SDL_BUTTON_RIGHT)
+			{
+				SDL_GetMouseState(&m_MouseX, &m_MouseY);
+				m_pMouseSubject->Notify(Event::RightMouseUp);
 			}
 		}
 	}
@@ -43,4 +65,9 @@ void Engine::InputManager::AddObserver(Observer* pObserver)
 void Engine::InputManager::RemoveObserver(Observer* pObserver)
 {
 	m_pMouseSubject->RemoveObserver(pObserver);
+}
+
+const glm::vec2 Engine::InputManager::GetMousePos() const
+{
+	return glm::vec2(m_MouseX, m_MouseY);
 }

@@ -19,6 +19,7 @@ namespace Engine
 		virtual void FixedUpdate(float deltaTime) = 0;
 
 		const GameObject* GetOwner() const { return m_pOwner; }
+		const GameObject* GetGameObject() const { return m_pOwner; }
 
 	private:
 		GameObject* m_pOwner;

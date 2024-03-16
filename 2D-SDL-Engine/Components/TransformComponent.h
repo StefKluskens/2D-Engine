@@ -22,7 +22,9 @@ namespace Engine
 		void UpdateWorldPosition();
 
 		void SetLocalPosition(const glm::vec2& pos);
+		void SetLocalPosition(float x, float y);
 		void SetWorldPosition(const glm::vec2& pos) { m_WorldPosition = pos; }
+		void SetWorldPosition(float x, float y) { m_WorldPosition = { x, y }; }
 		void SetPositionDirty();
 
 	private:

@@ -5,15 +5,16 @@
 #include "SceneGraph/GameObject.h"
 
 #include "Components/Player.h"
+#include "Components/PlayerSpawner.h"
 
 void FP::FootballProject::Load()
 {
 	auto& scene = Engine::SceneManager::GetInstance().CreateScene("Perfect Passing");
 	Engine::SceneManager::GetInstance().SetActiveScene(&scene);
 
-	auto player1Go = std::make_shared<Engine::GameObject>("Player1", &scene);
-	scene.AddObject(player1Go);
+	auto playerSpawnerGo = std::make_shared<Engine::GameObject>("PlayerSpawner", &scene);
+	scene.AddObject(playerSpawnerGo);
 
-	auto playerComponent = std::make_unique<Player>(player1Go.get());
-	player1Go->AddComponent(std::move(playerComponent));
+	auto playerSpawnerComponent = std::make_unique<PlayerSpawner>(playerSpawnerGo.get());
+	playerSpawnerGo->AddComponent(std::move(playerSpawnerComponent));
 }

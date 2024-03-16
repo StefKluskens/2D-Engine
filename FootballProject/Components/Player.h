@@ -1,10 +1,21 @@
 #pragma once
 #include "Components/BaseComponent.h"
 #include "../FootballProject/Interfaces/ISelectable.h"
+#include "Observer/Observer.h"
+#include <memory>
+#include <string>
+#include "../Circle.h"
+
+struct SDL_Renderer;
+
+namespace Engine
+{
+	class InputManager;
+}
 
 namespace FP
 {
-	class Player : public Engine::BaseComponent, public FP::ISelectable
+	class Player final : public Engine::BaseComponent, public FP::ISelectable, public Engine::Observer
 	{
 	public:
 		Player(Engine::GameObject* pObject);
@@ -19,11 +30,28 @@ namespace FP
 		void FixedUpdate(float /*deltaTime*/) override {};
 
 	private:
+		virtual void OnSelect() override;
+		virtual void OnDeselect() override;
+
+		void Notify(Engine::Event event) override;
+
+		bool PointInWindow(glm::vec2 minBounds, glm::vec2 maxBounds) const;
+
 		bool m_InPossession{ false };
 		bool m_IsSelected{ false };
 
-		// Inherited via ISelectable
-		virtual void OnSelect() override;
-		virtual void OnDeselect() override;
+		std::unique_ptr<Circle> m_pCircle;
+
+		int m_PlayerRadius{ 10 };
+
+		Engine::InputManager& m_InputManager;
+
+		glm::vec2 m_MousePos{ 0, 0 };
+
+		mutable glm::vec2 m_minBoundsWindow;
+		mutable glm::vec2 m_maxBoundsWindow;
+
+		std::string m_ObjectName;
+		std::string m_PlayerText;
 	};
 }
