@@ -19,8 +19,8 @@ void Engine::Subject::RemoveObserver(Observer* pObserver)
 
 void Engine::Subject::Notify(Event event)
 {
-	for (auto pObserver : m_pObservers)
+	for (int i = 0; i < m_pObservers.size(); ++i)
 	{
-		pObserver->Notify(event);
+		m_pObservers[i]->Notify(event);
 	}
 }

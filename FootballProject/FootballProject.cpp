@@ -6,6 +6,7 @@
 
 #include "Components/Player.h"
 #include "Components/PlayerSpawner.h"
+#include "Input/InputManager.h"
 
 void FP::FootballProject::Load()
 {
@@ -16,5 +17,6 @@ void FP::FootballProject::Load()
 	scene.AddObject(playerSpawnerGo);
 
 	auto playerSpawnerComponent = std::make_unique<PlayerSpawner>(playerSpawnerGo.get());
+	Engine::InputManager::GetInstance().AddObserver(playerSpawnerComponent.get());
 	playerSpawnerGo->AddComponent(std::move(playerSpawnerComponent));
 }

@@ -7,9 +7,7 @@
 
 FP::PlayerSpawner::PlayerSpawner(Engine::GameObject* pObject)
 	: Engine::BaseComponent(pObject)
-	, m_InputManager(Engine::InputManager::GetInstance())
 {
-	m_InputManager.AddObserver(this);
 }
 
 void FP::PlayerSpawner::Render() const
@@ -38,7 +36,7 @@ void FP::PlayerSpawner::Notify(Engine::Event event)
 	{
 		case Engine::Event::LeftMouseDown:
 		{
-			m_MousePos = m_InputManager.GetMousePos();
+			m_MousePos = Engine::InputManager::GetInstance().GetMousePos();
 
 			if (PointInWindow(m_minBoundsWindow, m_maxBoundsWindow))
 			{
@@ -47,15 +45,23 @@ void FP::PlayerSpawner::Notify(Engine::Event event)
 
 			if (!m_SpawnPlayer)
 			{
+				SetPlayersSelectable(true);
 				break;
 			}
+			else
+			{
+				SetPlayersSelectable(false);
+			}
+
 			auto scene = GetGameObject()->GetScene();
-			auto playerGo = std::make_shared<Engine::GameObject>("Player", scene);
+			auto playerGo = std::make_shared<Engine::GameObject>("Player " + std::to_string(m_pPlayers.size()), scene);
 			scene->AddObject(playerGo);
-			auto mousePos = m_InputManager.GetMousePos();
+			auto mousePos = Engine::InputManager::GetInstance().GetMousePos();
 			playerGo->GetTransform()->SetLocalPosition(mousePos.x, mousePos.y);
 
 			auto playerComponent = std::make_unique<Player>(playerGo.get());
+			Engine::InputManager::GetInstance().AddObserver(playerComponent.get());
+			m_pPlayers.push_back(playerComponent.get());
 			playerGo->AddComponent(std::move(playerComponent));
 			break;
 		}
@@ -65,4 +71,12 @@ void FP::PlayerSpawner::Notify(Engine::Event event)
 bool FP::PlayerSpawner::PointInWindow(glm::vec2 minBounds, glm::vec2 maxBounds) const
 {
 	return m_MousePos.x > minBounds.x && m_MousePos.x < maxBounds.x && m_MousePos.y > minBounds.y && m_MousePos.y < maxBounds.y;
+}
+
+void FP::PlayerSpawner::SetPlayersSelectable(bool selectable)
+{
+	for (int i = 0; i < m_pPlayers.size(); ++i)
+	{
+		m_pPlayers[i]->m_CanBeSelected = selectable;
+	}
 }

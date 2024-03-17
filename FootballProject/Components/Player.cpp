@@ -10,25 +10,20 @@
 
 FP::Player::Player(Engine::GameObject* pObject)
 	: Engine::BaseComponent(pObject)
-	, m_InputManager(Engine::InputManager::GetInstance())
 {
-	m_InputManager.AddObserver(this);
-
 	auto pos = GetGameObject()->GetTransform()->GetWorldPosition();
 	m_pCircle = std::make_unique<Circle>(Engine::Renderer::GetInstance().GetRenderer(), (int)pos.x, (int)pos.y, m_PlayerRadius, 255, 0, 0);
 
 	m_ObjectName = GetGameObject()->GetName();
 
 	m_PlayerText = "This is " + m_ObjectName;
-
-	std::cout << "Player created\n";
 }
 
 void FP::Player::Render() const
 {
 	m_pCircle->Render();
 
-	if (m_IsSelected)
+	if (m_CanBeSelected && m_IsSelected)
 	{
 		ImGui::Begin(m_ObjectName.c_str());
 		ImGui::Text(m_PlayerText.c_str());
@@ -63,7 +58,7 @@ void FP::Player::Notify(Engine::Event event)
 	{
 	case Engine::Event::LeftMouseDown:
 	{
-		m_MousePos = m_InputManager.GetMousePos();
+		m_MousePos = Engine::InputManager::GetInstance().GetMousePos();
 		if (PointInWindow(m_minBoundsWindow, m_maxBoundsWindow))
 		{
 			m_IsSelected = true;

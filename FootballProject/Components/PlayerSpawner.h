@@ -1,14 +1,12 @@
 #pragma once
 #include "Components/BaseComponent.h"
 #include "Observer/Observer.h"
-
-namespace Engine
-{
-	class InputManager;
-}
+#include <vector>
 
 namespace FP
 {
+	class Player;
+
 	class PlayerSpawner final : public Engine::BaseComponent, public Engine::Observer
 	{
 	public:
@@ -27,7 +25,9 @@ namespace FP
 		void Notify(Engine::Event event) override;
 		bool PointInWindow(glm::vec2 minBounds, glm::vec2 maxBounds) const;
 
-		Engine::InputManager& m_InputManager;
+		void SetPlayersSelectable(bool selectable);
+
+		std::vector<Player*> m_pPlayers{};
 
 		glm::vec2 m_MousePos{ 0, 0 };
 		mutable glm::vec2 m_minBoundsWindow{};

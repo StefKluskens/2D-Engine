@@ -8,11 +8,6 @@
 
 struct SDL_Renderer;
 
-namespace Engine
-{
-	class InputManager;
-}
-
 namespace FP
 {
 	class Player final : public Engine::BaseComponent, public FP::ISelectable, public Engine::Observer
@@ -29,6 +24,8 @@ namespace FP
 		void Update(float /*deltaTime*/) override {};
 		void FixedUpdate(float /*deltaTime*/) override {};
 
+		bool m_CanBeSelected{ false };
+
 	private:
 		virtual void OnSelect() override;
 		virtual void OnDeselect() override;
@@ -43,8 +40,6 @@ namespace FP
 		std::unique_ptr<Circle> m_pCircle;
 
 		int m_PlayerRadius{ 10 };
-
-		Engine::InputManager& m_InputManager;
 
 		glm::vec2 m_MousePos{ 0, 0 };
 
