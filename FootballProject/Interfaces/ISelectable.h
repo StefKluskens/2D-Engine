@@ -13,8 +13,8 @@ namespace FP
 		virtual void OnSelect() = 0;
 		virtual void OnDeselect() = 0;
 
-		Engine::GameObject* GetOwner() const { return m_pOwner; }
+		Engine::GameObject* GetOwner() const { return m_pGameObject; }
 	private:
-		Engine::GameObject* m_pOwner;
+		Engine::GameObject* m_pGameObject;
 	};
 }

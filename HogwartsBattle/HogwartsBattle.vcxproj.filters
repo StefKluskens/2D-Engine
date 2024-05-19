@@ -21,10 +21,10 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cards\CardComponent.cpp">
+    <ClCompile Include="Cards\Components\CardComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cards\CardClickObserver.cpp">
+    <ClCompile Include="Cards\Components\CardClickObserver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Cards\Components\DarkArtsCardComponent.cpp">
@@ -36,15 +36,24 @@
     <ClCompile Include="Cards\Components\LocationCardComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Cards\Deck\DeckClickObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Managers\GameManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\Commands.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HogwartsBattle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cards\CardComponent.h">
+    <ClInclude Include="Cards\Components\CardComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cards\CardClickObserver.h">
+    <ClInclude Include="Cards\Components\CardClickObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cards\Components\DarkArtsCardComponent.h">
@@ -54,6 +63,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Cards\Components\LocationCardComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cards\Deck\DeckClickObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Managers\GameManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands\Commands.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

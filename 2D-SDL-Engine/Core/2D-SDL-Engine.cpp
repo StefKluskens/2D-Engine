@@ -21,7 +21,7 @@ Engine::SDLEngine::SDLEngine(const std::string& dataPath, const std::string& win
 		SDL_WINDOWPOS_CENTERED,
 		g_WindowWidth,
 		g_WindowHeight,
-		SDL_WINDOW_OPENGL);
+		SDL_WINDOW_FULLSCREEN_DESKTOP);
 	//SDL_SetWindowFullscreen(g_Window, SDL_WINDOW_INPUT_FOCUS);
 
 	Renderer::GetInstance().CreateRenderer(g_Window);
@@ -43,6 +43,8 @@ void Engine::SDLEngine::Run(const std::function<void()>& load)
 	auto& input = InputManager::GetInstance();
 	auto& renderer = Renderer::GetInstance();
 	auto& sceneManager = SceneManager::GetInstance();
+
+	sceneManager.Start();
 
 	bool doContinue = true;
 	auto lastTime = std::chrono::high_resolution_clock::now();

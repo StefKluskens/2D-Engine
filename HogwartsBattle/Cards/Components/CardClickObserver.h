@@ -21,6 +21,7 @@ namespace HB
 		CardClickObserver& operator=(const CardClickObserver& other) = delete;
 		CardClickObserver& operator=(CardClickObserver&& other) = delete;
 
+		void Start() override;
 		void Render() const override {};
 		void Update(float /*deltaTime*/) override {};
 		void FixedUpdate(float /*deltaTime*/) override {};
@@ -30,6 +31,6 @@ namespace HB
 
 		Engine::InputManager& m_InputManager;
 
-		CardComponent* m_CardComponent;
+		CardComponent* m_pCardComponent;
 	};
 }

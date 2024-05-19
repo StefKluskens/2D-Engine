@@ -14,6 +14,7 @@ namespace Engine
 		Scene& operator=(const Scene& other) = delete;
 		Scene& operator=(Scene&& other) = delete;
 
+		void Start();
 		void Update(float deltaTime);
 		void FixedUpdate(float deltaTime);
 		void Render();

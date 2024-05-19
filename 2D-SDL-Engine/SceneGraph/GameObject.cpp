@@ -8,6 +8,19 @@ Engine::GameObject::GameObject(std::string name, Scene* pScene)
 	m_pTransform = std::make_unique<Engine::TransformComponent>(this);
 }
 
+void Engine::GameObject::Start()
+{
+	for (size_t i = 0; i < m_pChildren.size(); ++i)
+	{
+		m_pChildren[i]->Start();
+	}
+
+	for (size_t i = 0; i < m_pComponents.size(); ++i)
+	{
+		m_pComponents[i]->Start();
+	}
+}
+
 void Engine::GameObject::Update(float deltaTime)
 {
 	for (size_t i = 0; i < m_pChildren.size(); ++i)

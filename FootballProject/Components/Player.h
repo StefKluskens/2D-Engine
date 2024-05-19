@@ -20,6 +20,7 @@ namespace FP
 		Player& operator=(const Player& other) = delete;
 		Player& operator=(Player&& other) = delete;
 
+		void Start() override {};
 		void Render() const override;
 		void Update(float /*deltaTime*/) override {};
 		void FixedUpdate(float /*deltaTime*/) override {};

@@ -159,6 +159,7 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Commands\Command.cpp" />
     <ClCompile Include="Components\BaseComponent.cpp" />
     <ClCompile Include="Core\2D-SDL-Engine.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
@@ -184,6 +185,7 @@
     <ClCompile Include="Window\WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Commands\Command.h" />
     <ClInclude Include="Components\BaseComponent.h" />
     <ClInclude Include="Core\2D-SDL-Engine.h" />
     <ClInclude Include="imgui\imconfig.h" />

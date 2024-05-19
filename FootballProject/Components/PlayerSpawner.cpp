@@ -53,7 +53,7 @@ void FP::PlayerSpawner::Notify(Engine::Event event)
 				SetPlayersSelectable(false);
 			}
 
-			auto scene = GetGameObject()->GetScene();
+			auto scene = m_pOwner->GetScene();
 			auto playerGo = std::make_shared<Engine::GameObject>("Player " + std::to_string(m_pPlayers.size()), scene);
 			scene->AddObject(playerGo);
 			auto mousePos = Engine::InputManager::GetInstance().GetMousePos();

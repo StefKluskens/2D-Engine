@@ -17,6 +17,7 @@ namespace FP
 		PlayerSpawner& operator=(const PlayerSpawner& other) = delete;
 		PlayerSpawner& operator=(PlayerSpawner&& other) = delete;
 
+		void Start() override {};
 		void Render() const override;
 		void Update(float /*deltaTime*/) override {};
 		void FixedUpdate(float /*deltaTime*/) override {};

@@ -13,6 +13,7 @@ namespace Engine
 		TransformComponent& operator=(const TransformComponent& other) = delete;
 		TransformComponent& operator=(TransformComponent&& other) = delete;
 		
+		void Start() override {};
 		void Render() const override {};
 		void Update(float /*deltaTime*/) override {};
 		void FixedUpdate(float /*deltaTime*/) override {};

@@ -18,6 +18,7 @@ namespace Engine
 		GameObject& operator=(const GameObject& other) = delete;
 		GameObject& operator=(GameObject&& other) = delete;
 
+		void Start();
 		void Update(float deltaTime);
 		void FixedUpdate(float deltaTime);
 		void Render() const;
@@ -42,6 +43,9 @@ namespace Engine
 
 		Scene* GetScene() const { return m_pScene; }
 
+		void SetActive(bool active) { m_IsActive = active; }
+		bool IsActive() const { return m_IsActive; }
+
 	private:
 		std::string m_Name{ "GameObject" };
 		std::string m_Tag{ "" };
@@ -53,6 +57,8 @@ namespace Engine
 
 		GameObject* m_pParent{ nullptr };
 		std::vector<std::unique_ptr<GameObject>> m_pChildren;
+
+		bool m_IsActive{ true };
 	};
 
 	template<typename T>

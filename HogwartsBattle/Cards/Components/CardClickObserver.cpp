@@ -4,13 +4,18 @@
 #include <iostream>
 #include <glm/glm.hpp>
 #include "SceneGraph/GameObject.h"
+#include <iostream>
 
 HB::CardClickObserver::CardClickObserver(Engine::GameObject* pObject)
 	: Engine::BaseComponent(pObject)
 	, m_InputManager(Engine::InputManager::GetInstance())
 {
 	m_InputManager.AddObserver(this);
-	m_CardComponent = pObject->GetComponent<CardComponent>();
+}
+
+void HB::CardClickObserver::Start()
+{
+	m_pCardComponent = m_pOwner->GetComponent<CardComponent>();
 }
 
 void HB::CardClickObserver::Notify(Engine::Event event)

@@ -8,6 +8,14 @@ Engine::Scene& Engine::SceneManager::CreateScene(const std::string& name)
     return *scene;
 }
 
+void Engine::SceneManager::Start()
+{
+    if (m_pActiveScene)
+    {
+		m_pActiveScene->Start();
+	}
+}
+
 void Engine::SceneManager::Update(float deltaTime)
 {
     if (m_pActiveScene)

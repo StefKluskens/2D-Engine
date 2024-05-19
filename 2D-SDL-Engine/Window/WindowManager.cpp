@@ -2,6 +2,6 @@
 
 namespace Engine
 {
-	int g_WindowWidth = 1024;
-	int g_WindowHeight = 768;
+	int g_WindowWidth = 1920;
+	int g_WindowHeight = 1080;
 }

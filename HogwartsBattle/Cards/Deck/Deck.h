@@ -1,7 +1,7 @@
 #pragma once
 #include "Components/BaseComponent.h"
-#include <vector>
 #include "SDL_rect.h"
+#include <vector>
 
 namespace HB
 {
@@ -17,16 +17,26 @@ namespace HB
 		Deck& operator=(const Deck& other) = delete;
 		Deck& operator=(Deck&& other) = delete;
 
+		void Start() override {};
 		void Render() const override {};
 		void Update(float /*deltaTime*/) override {};
 		void FixedUpdate(float /*deltaTime*/) override {};
 
 		void AddCard(CardComponent* CardPtr);
 		void Shuffle();
+		void DeckClicked();
+
+		bool IsPointInDeck(const glm::vec2& pos);
+		bool IsPointInDeck(const float X, const float Y);
+		bool IsPointInDeck(const int X, const int Y);
 
 	private:
+		void DealCard();
+
 		std::vector<CardComponent*> m_Cards{};
-		SDL_Rect m_CardRect;
+		std::vector<CardComponent*> m_PlayedCards{};
 		bool m_ShouldShuffle = false;
+
+		SDL_Rect m_DeckRect;
 	};
 }

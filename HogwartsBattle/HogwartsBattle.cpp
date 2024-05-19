@@ -5,10 +5,14 @@
 #include "SceneGraph/Scene.h"
 #include "Components/TextureComponent.h"
 #include "Window/WindowManager.h"
-#include "Cards/CardClickObserver.h"
-#include "Cards/CardComponent.h"
+#include "Cards/Components/CardClickObserver.h"
+#include "Cards/Components/CardComponent.h"
 #include "Cards/Components/DarkArtsCardComponent.h"
+#include "Cards/Components/LocationCardComponent.h"
 #include "Cards/Deck/Deck.h"
+#include <iostream>
+#include "Cards/Deck/DeckClickObserver.h"
+#include "Managers/GameManager.h"
 
 void HB::HogwartsBattle::Load()
 {
@@ -21,46 +25,62 @@ void HB::HogwartsBattle::Load()
 	auto textureComponent = std::make_unique<Engine::TextureComponent>(boardGo.get(), "Board.png");
 	
 	auto textureWidth = textureComponent->GetTextureSize().x;
-	auto textureHeight = textureComponent->GetTextureSize().y;
-
-	boardGo->SetPosition(Engine::g_WindowWidth / 2 - textureWidth / 2, Engine::g_WindowHeight / 2 - textureHeight / 2);
+	boardGo->SetPosition(Engine::g_WindowWidth / 2 - textureWidth / 2, 0.0f);
 	boardGo->AddComponent(std::move(textureComponent));
 
-	//Create dark arts deck object
+
+	//Dark arts card
+	auto darkArtsEventGo = std::make_shared<Engine::GameObject>("DarkArtsCard", &scene);
+	scene.AddObject(darkArtsEventGo);
+	darkArtsEventGo->SetActive(false);
+
+	textureComponent = std::make_unique<Engine::TextureComponent>(darkArtsEventGo.get(), "Front_Event.png");
+	darkArtsEventGo->AddComponent(std::move(textureComponent));
+
+	auto cardComponent = std::make_unique<DarkArtsCardComponent>(darkArtsEventGo.get(), "Flipendo!");
+	cardComponent->SetEffects(1, 1, 0, false);
+
+	//Dark arts deck
 	auto darkArtsDeckGo = std::make_shared<Engine::GameObject>("Dark Arts Deck", &scene);
 	scene.AddObject(darkArtsDeckGo);
-	darkArtsDeckGo->SetPosition(750.0f, 265.0f);
 
-	//Creat + add dark arts deck texture
 	textureComponent = std::make_unique<Engine::TextureComponent>(darkArtsDeckGo.get(), "dark_arts_event.png");
 	darkArtsDeckGo->AddComponent(std::move(textureComponent));
 
-	//Create dark arts card object
-	auto darkArtsEventGo = std::make_shared<Engine::GameObject>("DarkArtsCard", &scene);
-	scene.AddObject(darkArtsEventGo);
-	darkArtsEventGo->SetPosition(800.0f, 265.0f);
-
-	//Create + add dark arts card texture
-	textureComponent = std::make_unique<Engine::TextureComponent>(darkArtsDeckGo.get(), "dark_arts_event.png");
-	darkArtsEventGo->AddComponent(std::move(textureComponent));
-
-	//Create dark arts card component
-	auto cardComponent = std::make_unique<DarkArtsCardComponent>(darkArtsEventGo.get());
-
-	//Create dark arts deck component
 	auto deckComponent = std::make_unique<Deck>(darkArtsDeckGo.get(), true);
-
-	//Add dark arts card to deck
 	deckComponent->AddCard(cardComponent.get());
 
-	//Create + add click observer for dark arts card
+	darkArtsEventGo->AddComponent(std::move(cardComponent));
+
+	darkArtsDeckGo->AddComponent(std::move(deckComponent));
+
 	auto cardClickComponent = std::make_unique<CardClickObserver>(darkArtsEventGo.get());
 	darkArtsEventGo->AddComponent(std::move(cardClickComponent));
 
-	//Add dark arts card component
-	darkArtsEventGo->AddComponent(std::move(cardComponent));
+	auto deckClickComponent = std::make_unique<DeckClickObserver>(darkArtsDeckGo.get());
+	darkArtsDeckGo->AddComponent(std::move(deckClickComponent));
 
-	//Add deck component
-	darkArtsDeckGo->AddComponent(std::move(deckComponent));
+
+	//Location deck
+	auto locationDeckGo = std::make_shared<Engine::GameObject>("Location Deck", &scene);
+	scene.AddObject(locationDeckGo);
+	deckComponent = std::make_unique<Deck>(locationDeckGo.get(), true);
+
+	//Location card
+	auto locationGo = std::make_shared<Engine::GameObject>("LocationCard", &scene);
+	scene.AddObject(locationGo);
+
+	textureComponent = std::make_unique<Engine::TextureComponent>(locationGo.get(), "Front_Location.png");
+	locationGo->AddComponent(std::move(textureComponent));
+
+	auto locationCardComponent = std::make_unique<LocationCardComponent>(locationGo.get(), 4, "Diagon Alley");
+	deckComponent->AddCard(locationCardComponent.get());
+
+	////Create + add click observer for dark arts card
+	//auto cardClickComponent = std::make_unique<CardClickObserver>(darkArtsEventGo.get());
+	//darkArtsEventGo->AddComponent(std::move(cardClickComponent));
+
+	locationGo->AddComponent(std::move(locationCardComponent));
+	locationDeckGo->AddComponent(std::move(deckComponent));
 	
 }

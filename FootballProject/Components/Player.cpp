@@ -11,10 +11,10 @@
 FP::Player::Player(Engine::GameObject* pObject)
 	: Engine::BaseComponent(pObject)
 {
-	auto pos = GetGameObject()->GetTransform()->GetWorldPosition();
+	auto pos = m_pOwner->GetTransform()->GetWorldPosition();
 	m_pCircle = std::make_unique<Circle>(Engine::Renderer::GetInstance().GetRenderer(), (int)pos.x, (int)pos.y, m_PlayerRadius, 255, 0, 0);
 
-	m_ObjectName = GetGameObject()->GetName();
+	m_ObjectName = m_pOwner->GetName();
 
 	m_PlayerText = "This is " + m_ObjectName;
 }
@@ -64,7 +64,7 @@ void FP::Player::Notify(Engine::Event event)
 			m_IsSelected = true;
 			break;
 		}
-		m_IsSelected = m_pCircle->IsInsideCircle(GetGameObject()->GetTransform()->GetWorldPosition(), (int)m_MousePos.x, (int)m_MousePos.y);
+		m_IsSelected = m_pCircle->IsInsideCircle(m_pOwner->GetTransform()->GetWorldPosition(), (int)m_MousePos.x, (int)m_MousePos.y);
 
 		break;
 	}

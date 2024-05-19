@@ -2,6 +2,7 @@
 #include "SDL.h"
 #include "../Observer/Observer.h"
 #include <backends/imgui_impl_sdl2.h>
+#include <iostream>
 
 Engine::InputManager::InputManager()
 	: m_pMouseSubject(std::make_unique<Subject>())
