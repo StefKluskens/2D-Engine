@@ -32,6 +32,11 @@ bool HB::CardComponent::IsPointInCard(const int X, const int Y)
 	return SDL_PointInRect(&point, &m_CardRect);
 }
 
+void HB::CardComponent::AddCardEffect(std::unique_ptr<CardEffects> pEffect)
+{
+	m_CardEffects.emplace_back(std::move(pEffect));
+}
+
 void HB::CardComponent::CreateCardRect()
 {
 	const auto pos = m_pOwner->GetTransform()->GetWorldPosition();

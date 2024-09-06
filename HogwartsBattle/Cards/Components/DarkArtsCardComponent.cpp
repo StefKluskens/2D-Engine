@@ -5,6 +5,7 @@
 #include "../2D-SDL-Engine/Components/TextureComponent.h"
 #include "../../Managers/GameManager.h"
 #include "SceneGraph/GameObject.h"
+#include "../Effects/CardEffects.h"
 #include <iostream>
 
 HB::DarkArtsCardComponent::DarkArtsCardComponent(Engine::GameObject* pObject, const std::string& cardName)
@@ -32,7 +33,7 @@ void HB::DarkArtsCardComponent::SetEffects(int healthToLose, int cardsToDiscard,
 
 void HB::DarkArtsCardComponent::CardClicked()
 {
-	std::cout << "Dark Arts Card clicked\n";
+	std::cout << "Dark Arts Card: " << m_CardName <<  " clicked\n";
 }
 
 void HB::DarkArtsCardComponent::PlayCard()
@@ -49,4 +50,8 @@ void HB::DarkArtsCardComponent::PlayCard()
 
 	std::cout<<"Played Dark Arts Card: " << m_CardName << "\n";
 
+	for (size_t i = 0; i < m_CardEffects.size(); ++i)
+	{
+		m_CardEffects[i]->PlayEffect(nullptr);
+	}
 }

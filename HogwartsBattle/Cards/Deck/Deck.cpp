@@ -49,11 +49,11 @@ void HB::Deck::Shuffle()
 
 void HB::Deck::DeckClicked()
 {
-	if (GameManager::GetInstance().GetState() == GameState::DarkArtsEvent)
+	/*if (GameManager::GetInstance().GetState() == GameState::DarkArtsEvent)
 	{
 		DealCard();
 		GameManager::GetInstance().SetState(GameState::Villains);
-	}
+	}*/
 }
 
 void HB::Deck::DealCard()

@@ -2,6 +2,9 @@
 #include <string>
 #include "Components/BaseComponent.h"
 #include "SDL_rect.h"
+#include <vector>
+#include <memory>
+#include "../Effects/CardEffects.h"
 
 namespace Engine
 {
@@ -36,6 +39,8 @@ namespace HB
 
 		virtual void PlayCard() = 0;
 
+		void AddCardEffect(std::unique_ptr<CardEffects> pEffect);
+
 	protected:
 		void CreateCardRect();
 
@@ -46,6 +51,8 @@ namespace HB
 		SDL_Rect m_CardRect;
 
 		std::string m_CardName;
+
+		std::vector<std::unique_ptr<CardEffects>> m_CardEffects;
 	};
 
 	/*

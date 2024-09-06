@@ -7,7 +7,7 @@ namespace HB
 {
 	class CardComponent;
 
-	class Deck final : public Engine::BaseComponent
+	class Deck : public Engine::BaseComponent
 	{
 	public:
 		Deck(Engine::GameObject* pObject, bool shouldShuffle);
@@ -22,21 +22,22 @@ namespace HB
 		void Update(float /*deltaTime*/) override {};
 		void FixedUpdate(float /*deltaTime*/) override {};
 
-		void AddCard(CardComponent* CardPtr);
-		void Shuffle();
-		void DeckClicked();
+		virtual void AddCard(CardComponent* CardPtr);
+		virtual void Shuffle();
+		virtual void DeckClicked();
 
 		bool IsPointInDeck(const glm::vec2& pos);
 		bool IsPointInDeck(const float X, const float Y);
 		bool IsPointInDeck(const int X, const int Y);
 
-	private:
+	protected:
 		void DealCard();
 
+	private:
 		std::vector<CardComponent*> m_Cards{};
 		std::vector<CardComponent*> m_PlayedCards{};
 		bool m_ShouldShuffle = false;
 
-		SDL_Rect m_DeckRect;
+		SDL_Rect m_DeckRect{};
 	};
 }

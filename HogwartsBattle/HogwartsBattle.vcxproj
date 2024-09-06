@@ -151,24 +151,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cards\Effects\CardEffects.cpp" />
     <ClCompile Include="Cards\Components\CardClickObserver.cpp" />
     <ClCompile Include="Cards\Components\CardComponent.cpp" />
     <ClCompile Include="Cards\Components\DarkArtsCardComponent.cpp" />
     <ClCompile Include="Cards\Deck\Deck.cpp" />
     <ClCompile Include="Cards\Deck\DeckClickObserver.cpp" />
     <ClCompile Include="Commands\Commands.cpp" />
+    <ClCompile Include="Cards\Deck\DarkArtsDeck.cpp" />
+    <ClCompile Include="Components\HealthComponent.cpp" />
     <ClCompile Include="Managers\GameManager.cpp" />
     <ClCompile Include="HogwartsBattle.cpp" />
     <ClCompile Include="Cards\Components\LocationCardComponent.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cards\Effects\CardEffects.h" />
     <ClInclude Include="Cards\Components\CardClickObserver.h" />
     <ClInclude Include="Cards\Components\CardComponent.h" />
     <ClInclude Include="Cards\Components\DarkArtsCardComponent.h" />
     <ClInclude Include="Cards\Deck\Deck.h" />
     <ClInclude Include="Cards\Deck\DeckClickObserver.h" />
     <ClInclude Include="Commands\Commands.h" />
+    <ClInclude Include="Cards\Deck\DarkArtsDeck.h" />
+    <ClInclude Include="Components\HealthComponent.h" />
     <ClInclude Include="Managers\GameManager.h" />
     <ClInclude Include="HogwartsBattle.h" />
     <ClInclude Include="Cards\Components\LocationCardComponent.h" />

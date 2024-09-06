@@ -13,6 +13,9 @@
 #include <iostream>
 #include "Cards/Deck/DeckClickObserver.h"
 #include "Managers/GameManager.h"
+#include "Cards/Deck/DarkArtsDeck.h"
+#include "Cards/Effects/CardEffects.h"
+#include "Components/HealthComponent.h"
 
 void HB::HogwartsBattle::Load()
 {
@@ -28,6 +31,12 @@ void HB::HogwartsBattle::Load()
 	boardGo->SetPosition(Engine::g_WindowWidth / 2 - textureWidth / 2, 0.0f);
 	boardGo->AddComponent(std::move(textureComponent));
 
+	//Player
+	auto playerGo = std::make_shared<Engine::GameObject>("Player", &scene);
+	scene.AddObject(playerGo);
+
+	auto healthComponent = std::make_unique<HealthComponent>(playerGo.get(), 10);
+
 
 	//Dark arts card
 	auto darkArtsEventGo = std::make_shared<Engine::GameObject>("DarkArtsCard", &scene);
@@ -40,6 +49,9 @@ void HB::HogwartsBattle::Load()
 	auto cardComponent = std::make_unique<DarkArtsCardComponent>(darkArtsEventGo.get(), "Flipendo!");
 	cardComponent->SetEffects(1, 1, 0, false);
 
+	auto lifeLossEffect = std::make_unique<LoseHealthEffect>(1);
+	cardComponent->AddCardEffect(std::move(lifeLossEffect));
+
 	//Dark arts deck
 	auto darkArtsDeckGo = std::make_shared<Engine::GameObject>("Dark Arts Deck", &scene);
 	scene.AddObject(darkArtsDeckGo);
@@ -47,7 +59,7 @@ void HB::HogwartsBattle::Load()
 	textureComponent = std::make_unique<Engine::TextureComponent>(darkArtsDeckGo.get(), "dark_arts_event.png");
 	darkArtsDeckGo->AddComponent(std::move(textureComponent));
 
-	auto deckComponent = std::make_unique<Deck>(darkArtsDeckGo.get(), true);
+	auto deckComponent = std::make_unique<DarkArtsDeck>(darkArtsDeckGo.get(), true);
 	deckComponent->AddCard(cardComponent.get());
 
 	darkArtsEventGo->AddComponent(std::move(cardComponent));
@@ -64,7 +76,7 @@ void HB::HogwartsBattle::Load()
 	//Location deck
 	auto locationDeckGo = std::make_shared<Engine::GameObject>("Location Deck", &scene);
 	scene.AddObject(locationDeckGo);
-	deckComponent = std::make_unique<Deck>(locationDeckGo.get(), true);
+	auto locationDeckComponent = std::make_unique<Deck>(locationDeckGo.get(), true);
 
 	//Location card
 	auto locationGo = std::make_shared<Engine::GameObject>("LocationCard", &scene);
@@ -74,13 +86,12 @@ void HB::HogwartsBattle::Load()
 	locationGo->AddComponent(std::move(textureComponent));
 
 	auto locationCardComponent = std::make_unique<LocationCardComponent>(locationGo.get(), 4, "Diagon Alley");
-	deckComponent->AddCard(locationCardComponent.get());
+	locationDeckComponent->AddCard(locationCardComponent.get());
 
 	////Create + add click observer for dark arts card
 	//auto cardClickComponent = std::make_unique<CardClickObserver>(darkArtsEventGo.get());
 	//darkArtsEventGo->AddComponent(std::move(cardClickComponent));
 
 	locationGo->AddComponent(std::move(locationCardComponent));
-	locationDeckGo->AddComponent(std::move(deckComponent));
-	
+	locationDeckGo->AddComponent(std::move(locationDeckComponent));
 }

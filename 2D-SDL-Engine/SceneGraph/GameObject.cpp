@@ -25,11 +25,19 @@ void Engine::GameObject::Update(float deltaTime)
 {
 	for (size_t i = 0; i < m_pChildren.size(); ++i)
 	{
+		if (!m_pChildren[i]->IsActive())
+		{
+			continue;
+		}
 		m_pChildren[i]->Update(deltaTime);
 	}
 
 	for (size_t i = 0; i < m_pComponents.size(); ++i)
 	{
+		if (!m_pComponents[i]->GetOwner()->IsActive())
+		{
+			continue;
+		}
 		m_pComponents[i]->Update(deltaTime);
 	}
 }
@@ -38,11 +46,19 @@ void Engine::GameObject::FixedUpdate(float deltaTime)
 {
 	for (size_t i = 0; i < m_pChildren.size(); ++i)
 	{
+		if (!m_pChildren[i]->IsActive())
+		{
+			continue;
+		}
 		m_pChildren[i]->FixedUpdate(deltaTime);
 	}
 
 	for (size_t i = 0; i < m_pComponents.size(); ++i)
 	{
+		if (!m_pComponents[i]->GetOwner()->IsActive())
+		{
+			continue;
+		}
 		m_pComponents[i]->FixedUpdate(deltaTime);
 	}
 }
@@ -51,11 +67,19 @@ void Engine::GameObject::Render() const
 {
 	for (size_t i = 0; i < m_pChildren.size(); ++i)
 	{
+		if (!m_pChildren[i]->IsActive())
+		{
+			continue;
+		}
 		m_pChildren[i]->Render();
 	}
 
 	for (size_t i = 0; i < m_pComponents.size(); ++i)
 	{
+		if (!m_pComponents[i]->GetOwner()->IsActive())
+		{
+			continue;
+		}
 		m_pComponents[i]->Render();
 	}
 }
