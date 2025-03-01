@@ -8,6 +8,8 @@
 #include "Components/PlayerSpawner.h"
 #include "Input/InputManager.h"
 
+#include "Window/WindowManager.h"
+
 void FP::FootballProject::Load()
 {
 	auto& scene = Engine::SceneManager::GetInstance().CreateScene("Perfect Passing");

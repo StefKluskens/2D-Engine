@@ -1,0 +1,19 @@
+In project settings:
+	Set language to newest C++ version
+	Set warning level to 4
+	Add to Include Directories:
+		$(SolutionDir)\2D-SDL-Engine
+		$(SolutionDir)\3rdParty\imgui
+		$(SolutionDir)\3rdParty\imgui\backends
+	Add to Additional Dependencies
+		2D-SDL-Engine.lib
+	Add to Post-Build Event
+		xcopy $(SolutionDir)3rdParty\SDL2\lib\$(PlatformTarget)\SDL2.dll $(OutputPath) /R /Y
+		xcopy $(SolutionDir)3rdParty\SDL2_image\lib\$(PlatformTarget)\*.dll $(OutputPath) /R /Y
+		xcopy $(SolutionDir)3rdParty\SDL2_ttf\lib\$(PlatformTarget)\*.dll $(OutputPath) /R /Y
+	
+Right click on project -> Build dependencies
+	Add 2D-SDL-Engine to Dependencies
+
+Property Manager -> right click on project
+	Add exisiting property sheet -> sdl.props

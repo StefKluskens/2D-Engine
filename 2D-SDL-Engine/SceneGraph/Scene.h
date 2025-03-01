@@ -18,6 +18,7 @@ namespace Engine
 		void Update(float deltaTime);
 		void FixedUpdate(float deltaTime);
 		void Render();
+		void OnGuiRender();
 
 		void AddObject(std::shared_ptr<GameObject> pObject);
 

@@ -40,6 +40,14 @@ void Engine::SceneManager::Render()
     }
 }
 
+void Engine::SceneManager::OnGuiRender()
+{
+    if (m_pActiveScene)
+    {
+        m_pActiveScene->OnGuiRender();
+    }
+}
+
 void Engine::SceneManager::SetActiveScene(Scene* scene)
 {
     m_pActiveScene = scene;

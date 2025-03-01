@@ -84,6 +84,19 @@ void Engine::GameObject::Render() const
 	}
 }
 
+void Engine::GameObject::OnGuiRender()
+{
+	for (size_t i = 0; i < m_pChildren.size(); ++i)
+	{
+		m_pChildren[i]->OnGuiRender();
+	}
+
+	for (size_t i = 0; i < m_pComponents.size(); ++i)
+	{
+		m_pComponents[i]->OnGuiRender();
+	}
+}
+
 void Engine::GameObject::AddComponent(std::unique_ptr<BaseComponent> pComponent)
 {
 	m_pComponents.emplace_back(std::move(pComponent));

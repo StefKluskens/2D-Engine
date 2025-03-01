@@ -151,18 +151,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Circle.cpp" />
     <ClCompile Include="FootballProject.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Components\Player.cpp" />
     <ClCompile Include="Components\PlayerSpawner.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Circle.h" />
     <ClInclude Include="FootballProject.h" />
     <ClInclude Include="Components\Player.h" />
     <ClInclude Include="Interfaces\ISelectable.h" />
     <ClInclude Include="Components\PlayerSpawner.h" />
+    <ClInclude Include="PlayerStructs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

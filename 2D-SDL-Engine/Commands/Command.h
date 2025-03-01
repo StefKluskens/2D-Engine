@@ -1,11 +1,9 @@
 #pragma once
-#include "../Core/Singleton.h"
-
 namespace Engine
 {
-	class Scene;
+	class GameObject;
 
-	class Command : public Singleton<Command>
+	class Command
 	{
 	public:
 		enum class ButtonState
@@ -16,15 +14,14 @@ namespace Engine
 			None
 		};
 
-		explicit Command(Scene* pScene) : m_pScene(pScene) {};
+		Command(GameObject* pObject);
 		virtual ~Command() {};
-		virtual void Execute(float deltaTime) = 0;
-		virtual ButtonState GetButtonState() = 0;
+		virtual void Execute() = 0;
+		//virtual ButtonState GetButtonState() = 0;
 
-		Scene* GetScene() const { return m_pScene; };
-		void SetScene(Scene* pScene) { m_pScene = pScene; }
+		const Engine::GameObject* GetObject() const { return m_pObject; }
 
-	private:
-		Scene* m_pScene{};
+	protected:
+			GameObject* m_pObject;
 	};
 }

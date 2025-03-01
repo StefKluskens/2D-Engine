@@ -53,6 +53,19 @@ void Engine::Scene::Render()
 	}
 }
 
+void Engine::Scene::OnGuiRender()
+{
+	for (size_t i = 0; i < m_pObjects.size(); ++i)
+	{
+		if (!m_pObjects[i]->IsActive())
+		{
+			continue;
+		}
+
+		m_pObjects[i]->OnGuiRender();
+	}
+}
+
 void Engine::Scene::AddObject(std::shared_ptr<GameObject> pObject)
 {
 	m_pObjects.push_back(pObject);

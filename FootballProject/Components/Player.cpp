@@ -11,8 +11,8 @@
 FP::Player::Player(Engine::GameObject* pObject)
 	: Engine::BaseComponent(pObject)
 {
-	auto pos = m_pOwner->GetTransform()->GetWorldPosition();
-	m_pCircle = std::make_unique<Circle>(Engine::Renderer::GetInstance().GetRenderer(), (int)pos.x, (int)pos.y, m_PlayerRadius, 255, 0, 0);
+	/*auto pos = m_pOwner->GetTransform()->GetWorldPosition();
+	m_pCircle = std::make_unique<Engine::Circle>(Engine::Renderer::GetInstance().GetRenderer(), (int)pos.x, (int)pos.y, m_PlayerRadius, 255, 0, 0);*/
 
 	m_ObjectName = m_pOwner->GetName();
 
@@ -21,8 +21,11 @@ FP::Player::Player(Engine::GameObject* pObject)
 
 void FP::Player::Render() const
 {
-	m_pCircle->Render();
+	//m_pCircle->Render();
+}
 
+void FP::Player::OnGuiRender()
+{
 	if (m_CanBeSelected && m_IsSelected)
 	{
 		ImGui::Begin(m_ObjectName.c_str());
@@ -33,10 +36,10 @@ void FP::Player::Render() const
 		m_minBoundsWindow = { window_pos.x, window_pos.y };
 		m_maxBoundsWindow = { window_pos.x + window_size.x, window_pos.y + window_size.y };
 
-		/*if (ImGui::Button("Show Position"))
+		if (ImGui::Button("Show Position"))
 		{
 			std::cout << "Player position: Central Midfielder\n";
-		}*/
+		}
 
 		ImGui::End();
 	}
@@ -61,17 +64,10 @@ void FP::Player::Notify(Engine::Event event)
 		m_MousePos = Engine::InputManager::GetInstance().GetMousePos();
 		if (PointInWindow(m_minBoundsWindow, m_maxBoundsWindow))
 		{
-			m_IsSelected = true;
 			break;
 		}
-		m_IsSelected = m_pCircle->IsInsideCircle(m_pOwner->GetTransform()->GetWorldPosition(), (int)m_MousePos.x, (int)m_MousePos.y);
+		//m_IsSelected = m_pCircle->IsInsideCircle(m_pOwner->GetTransform()->GetWorldPosition(), (int)m_MousePos.x, (int)m_MousePos.y);
 
-		break;
-	}
-	case Engine::Event::RightMouseDown:
-	{
-		//const auto clickedPos = m_InputManager.GetMousePos();
-		//std::cout << "Right Mouse Down at position: " << '\n';
 		break;
 	}
 	default:

@@ -42,6 +42,7 @@ void Engine::Renderer::Render() const
 	SDL_RenderClear(m_pRenderer);
 
 	SceneManager::GetInstance().Render();
+	SceneManager::GetInstance().OnGuiRender();
 
 	ImGui::Render();
 

@@ -7,6 +7,8 @@
 #include "SceneManager.h"
 #include <chrono>
 #include "../Window/WindowManager.h"
+#include <thread>
+#include "../Physics/PhysicsWorld.h"
 
 SDL_Window* g_Window{};
 
@@ -21,11 +23,12 @@ Engine::SDLEngine::SDLEngine(const std::string& dataPath, const std::string& win
 		SDL_WINDOWPOS_CENTERED,
 		g_WindowWidth,
 		g_WindowHeight,
-		SDL_WINDOW_FULLSCREEN_DESKTOP);
+		SDL_WINDOW_INPUT_FOCUS);
 	//SDL_SetWindowFullscreen(g_Window, SDL_WINDOW_INPUT_FOCUS);
 
 	Renderer::GetInstance().CreateRenderer(g_Window);
 	FileManager::GetInstance().CreateFileManager(dataPath);
+	PhysicsWorld::GetInstance();
 }
 
 Engine::SDLEngine::~SDLEngine()
@@ -43,6 +46,7 @@ void Engine::SDLEngine::Run(const std::function<void()>& load)
 	auto& input = InputManager::GetInstance();
 	auto& renderer = Renderer::GetInstance();
 	auto& sceneManager = SceneManager::GetInstance();
+	//TODO:Get instance of physics world
 
 	sceneManager.Start();
 
@@ -65,6 +69,7 @@ void Engine::SDLEngine::Run(const std::function<void()>& load)
 		while (lag >= fixedTimeStepSec)
 		{
 			sceneManager.FixedUpdate(fixedTimeStepSec);
+			//TODO:Physics world update
 			lag -= fixedTimeStepSec;
 		}
 

@@ -3,11 +3,14 @@
 #include "../Observer/Observer.h"
 #include <backends/imgui_impl_sdl2.h>
 #include <iostream>
+#include "../Core/SceneManager.h"
+#include "../SceneGraph/Scene.h"
 
 Engine::InputManager::InputManager()
 	: m_pMouseSubject(std::make_unique<Subject>())
 	, m_MouseX(0)
 	, m_MouseY(0)
+	, m_pSceneManager(&SceneManager::GetInstance())
 {
 }
 
@@ -53,6 +56,15 @@ bool Engine::InputManager::ProcessInput()
 				m_pMouseSubject->Notify(Event::RightMouseUp);
 			}
 		}
+
+		if (event.type == SDL_KEYDOWN)
+		{
+			auto pCommand = m_pCommands[event.key.keysym.scancode].get();
+			if (pCommand)
+			{
+				pCommand->Execute();
+			}
+		}
 	}
 
 	return true;
@@ -71,4 +83,9 @@ void Engine::InputManager::RemoveObserver(Observer* pObserver)
 const glm::vec2 Engine::InputManager::GetMousePos() const
 {
 	return glm::vec2(m_MouseX, m_MouseY);
+}
+
+void Engine::InputManager::AddCommand(SDL_Scancode key, std::unique_ptr<Command> pCommand)
+{
+	m_pCommands[key] = std::move(pCommand);
 }

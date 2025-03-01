@@ -16,8 +16,10 @@ namespace Engine
 		void Update(float deltaTime);
 		void FixedUpdate(float deltaTime);
 		void Render();
+		void OnGuiRender();
 
 		void SetActiveScene(Scene* scene);
+		const Scene* GetActiveScene() const { return m_pActiveScene; }
 
 	private:
 		friend class Singleton<SceneManager>;

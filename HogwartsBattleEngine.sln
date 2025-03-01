@@ -15,6 +15,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FootballProject", "Football
 		{5BE8EE41-6419-4096-959C-00C296E1168A} = {5BE8EE41-6419-4096-959C-00C296E1168A}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.vcxproj", "{F7F688B3-32A7-408D-99F9-40641720DA5A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5BE8EE41-6419-4096-959C-00C296E1168A} = {5BE8EE41-6419-4096-959C-00C296E1168A}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -47,6 +52,14 @@ Global
 		{3625F5BC-762A-4EFE-84CE-4FC7608E8098}.Release|x64.Build.0 = Release|x64
 		{3625F5BC-762A-4EFE-84CE-4FC7608E8098}.Release|x86.ActiveCfg = Release|Win32
 		{3625F5BC-762A-4EFE-84CE-4FC7608E8098}.Release|x86.Build.0 = Release|Win32
+		{F7F688B3-32A7-408D-99F9-40641720DA5A}.Debug|x64.ActiveCfg = Debug|x64
+		{F7F688B3-32A7-408D-99F9-40641720DA5A}.Debug|x64.Build.0 = Debug|x64
+		{F7F688B3-32A7-408D-99F9-40641720DA5A}.Debug|x86.ActiveCfg = Debug|Win32
+		{F7F688B3-32A7-408D-99F9-40641720DA5A}.Debug|x86.Build.0 = Debug|Win32
+		{F7F688B3-32A7-408D-99F9-40641720DA5A}.Release|x64.ActiveCfg = Release|x64
+		{F7F688B3-32A7-408D-99F9-40641720DA5A}.Release|x64.Build.0 = Release|x64
+		{F7F688B3-32A7-408D-99F9-40641720DA5A}.Release|x86.ActiveCfg = Release|Win32
+		{F7F688B3-32A7-408D-99F9-40641720DA5A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

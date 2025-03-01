@@ -22,6 +22,7 @@ namespace Engine
 		void Update(float deltaTime);
 		void FixedUpdate(float deltaTime);
 		void Render() const;
+		void OnGuiRender();
 
 		TransformComponent* GetTransform() const { return m_pTransform.get(); }
 

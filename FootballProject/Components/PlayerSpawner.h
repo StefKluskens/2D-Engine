@@ -19,6 +19,7 @@ namespace FP
 
 		void Start() override {};
 		void Render() const override;
+		void OnGuiRender() override;
 		void Update(float /*deltaTime*/) override {};
 		void FixedUpdate(float /*deltaTime*/) override {};
 
@@ -28,12 +29,14 @@ namespace FP
 
 		void SetPlayersSelectable(bool selectable);
 
+		void CreatePlayer();
+
 		std::vector<Player*> m_pPlayers{};
 
 		glm::vec2 m_MousePos{ 0, 0 };
-		mutable glm::vec2 m_minBoundsWindow{};
-		mutable glm::vec2 m_maxBoundsWindow{};
+		glm::vec2 m_minBoundsWindow{};
+		glm::vec2 m_maxBoundsWindow{};
 
-		mutable bool m_SpawnPlayer{ false };
+		bool m_SpawnPlayer{ false };
 	};
 }

@@ -15,6 +15,7 @@ namespace Engine
 		
 		void Start() override {};
 		void Render() const override {};
+		void OnGuiRender() override {};
 		void Update(float /*deltaTime*/) override {};
 		void FixedUpdate(float /*deltaTime*/) override {};
 
